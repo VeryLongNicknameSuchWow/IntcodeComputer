@@ -61,4 +61,8 @@ public class IO {
     public ProgramExecutor getExecutor() {
         return executor;
     }
+
+    public int getLastOutput() {
+        return outputsLog.get(outputsLog.size() - 1);
+    }
 }
