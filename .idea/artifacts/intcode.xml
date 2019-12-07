@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="intcode">
+    <output-path>$PROJECT_DIR$/out/artifacts/intcode</output-path>
+    <root id="archive" name="intcode.jar">
+      <element id="module-output" name="IntcodeComputer" />
+    </root>
+  </artifact>
+</component>
