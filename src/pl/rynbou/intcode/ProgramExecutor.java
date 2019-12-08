@@ -9,7 +9,8 @@ public class ProgramExecutor {
     private List<Integer> memory;
     private IO io;
     private int memoryPointer = 0;
-    private boolean running = false;
+    private boolean finished = false;
+    private boolean paused;
 
     public ProgramExecutor(List<Integer> program, boolean consoleInput, boolean consoleOutput) {
         memory = new ArrayList<>(program);
@@ -22,17 +23,27 @@ public class ProgramExecutor {
     }
 
     public void run() throws Exception {
-        running = true;
+        paused = false;
 
-        while (running) {
+        while (!finished && !paused) {
             OpcodeInfo info = OpcodeInfo.recognise(getAtPointer());
             Opcode opcode = info.getOpcodeObject();
             opcode.run(this);
         }
     }
 
+    public void reset() {
+        finished = false;
+        paused = false;
+        memoryPointer = 0;
+    }
+
+    public void pause() {
+        paused = true;
+    }
+
     public void stop() {
-        running = false;
+        finished = true;
     }
 
     public int getAtPointer() {
