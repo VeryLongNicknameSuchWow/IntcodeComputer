@@ -20,6 +20,18 @@ public class Cluster {
         iterator = nodes.iterator();
     }
 
+    public ProgramExecutor getFirstNode() {
+        return getNode(0);
+    }
+
+    public ProgramExecutor getLastNode() {
+        return getNode(getSize() - 1);
+    }
+
+    public void resetIterator() {
+        iterator = nodes.iterator();
+    }
+
     public ProgramExecutor getNode(int index) {
         return nodes.get(index);
     }
