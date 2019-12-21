@@ -8,18 +8,14 @@ import java.util.Scanner;
 public class IO {
 
     private static Scanner scanner = new Scanner(System.in);
-    private boolean consoleInput = true;
-    private boolean consoleOutput = true;
+    private boolean consoleInput;
+    private boolean consoleOutput;
     private boolean outputInterrupt = false;
     private List<Integer> inputs = new ArrayList<>();
     private List<Integer> inputsLog = new ArrayList<>();
     private List<Integer> outputsLog = new ArrayList<>();
     private Iterator<Integer> inputsIterator = inputs.iterator();
     private ProgramExecutor executor;
-
-    public IO(ProgramExecutor executor) {
-        this.executor = executor;
-    }
 
     public IO(ProgramExecutor executor, boolean consoleInput, boolean consoleOutput) {
         this.executor = executor;
