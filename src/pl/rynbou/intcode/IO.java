@@ -46,6 +46,10 @@ public class IO {
         this.inputsIterator = this.inputs.iterator();
     }
 
+    public void clearInputs() {
+        inputs = new ArrayList<>();
+    }
+
     public void setInputs(List<Integer> inputs) {
         this.inputs = new ArrayList<>(inputs);
         this.inputsIterator = this.inputs.iterator();
