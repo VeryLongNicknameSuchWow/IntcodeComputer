@@ -10,14 +10,11 @@ import java.util.List;
 
 public class Opcode2 extends Opcode {
 
-    int rawCode;
-    private List<ParameterMode> modes = new ArrayList<>();
-    private List<Integer> arguments = new ArrayList<>();
-
     @Override
     public void run(ProgramExecutor executor) {
-        rawCode = executor.getAtPointerAndIncrement();
-        modes = ParameterMode.modesFromRaw(rawCode, 2);
+        int rawCode = executor.getAtPointerAndIncrement();
+        List<Integer> arguments = new ArrayList<>();
+        List<ParameterMode> modes = ParameterMode.modesFromRaw(rawCode, 2);
 
         for (int i = 0; i < getOpcodeInfo().getArgsAmount(); i++) arguments.add(executor.getAtPointerAndIncrement());
 
