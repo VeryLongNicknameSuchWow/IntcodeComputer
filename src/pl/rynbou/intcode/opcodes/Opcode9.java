@@ -5,7 +5,7 @@ import pl.rynbou.intcode.OpcodeInfo;
 import pl.rynbou.intcode.ParameterMode;
 import pl.rynbou.intcode.ProgramExecutor;
 
-public class Opcode4 extends Opcode {
+public class Opcode9 extends Opcode {
 
     @Override
     public void run(ProgramExecutor executor) {
@@ -13,11 +13,11 @@ public class Opcode4 extends Opcode {
         long argument = executor.getAtPointerAndIncrement();
         ParameterMode mode = ParameterMode.modesFromRaw(rawCode).get(0);
 
-        executor.getIo().out(executor.get(mode, argument));
+        executor.adjustRelativePointer(executor.get(mode, argument));
     }
 
     @Override
     public OpcodeInfo getOpcodeInfo() {
-        return OpcodeInfo.OUTPUT;
+        return OpcodeInfo.ADJUST_OFFSET;
     }
 }

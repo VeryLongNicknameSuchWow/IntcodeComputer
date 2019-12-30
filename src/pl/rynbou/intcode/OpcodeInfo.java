@@ -4,14 +4,15 @@ import pl.rynbou.intcode.opcodes.*;
 
 public enum OpcodeInfo {
 
-    ADD(1,3, Opcode1.class),
-    MULTIPLY(2,3, Opcode2.class),
-    INPUT(3,1, Opcode3.class),
-    OUTPUT(4,1, Opcode4.class),
+    ADD(1, 3, Opcode1.class),
+    MULTIPLY(2, 3, Opcode2.class),
+    INPUT(3, 1, Opcode3.class),
+    OUTPUT(4, 1, Opcode4.class),
     JUMP_IF_TRUE(5, 2, Opcode5.class),
     JUMP_IF_FALSE(6, 2, Opcode6.class),
     LESS_THAN(7, 3, Opcode7.class),
-    EQUALS(8,3, Opcode8.class),
+    EQUALS(8, 3, Opcode8.class),
+    ADJUST_OFFSET(9, 1, Opcode9.class),
     END(99, 0, Opcode99.class);
 
     private final int opcode;

@@ -11,10 +11,10 @@ public class IO {
     private boolean consoleInput;
     private boolean consoleOutput;
     private boolean outputInterrupt = false;
-    private List<Integer> inputs = new ArrayList<>();
-    private List<Integer> inputsLog = new ArrayList<>();
-    private List<Integer> outputsLog = new ArrayList<>();
-    private Iterator<Integer> inputsIterator = inputs.iterator();
+    private List<Long> inputs = new ArrayList<>();
+    private List<Long> inputsLog = new ArrayList<>();
+    private List<Long> outputsLog = new ArrayList<>();
+    private Iterator<Long> inputsIterator = inputs.iterator();
     private ProgramExecutor executor;
 
     public IO(ProgramExecutor executor, boolean consoleInput, boolean consoleOutput) {
@@ -23,14 +23,14 @@ public class IO {
         this.consoleOutput = consoleOutput;
     }
 
-    public void out(int i) {
+    public void out(long i) {
         if (consoleOutput) System.out.println("OUT: " + i);
         if (outputInterrupt) executor.pause();
         outputsLog.add(i);
     }
 
-    public int in() {
-        int input;
+    public long in() {
+        long input;
         if (!consoleInput && inputsIterator.hasNext()) {
             input = inputsIterator.next();
         } else {
@@ -41,7 +41,7 @@ public class IO {
         return input;
     }
 
-    public void addInput(int input) {
+    public void addInput(long input) {
         inputs.add(input);
         this.inputsIterator = this.inputs.iterator();
     }
@@ -50,16 +50,16 @@ public class IO {
         inputs = new ArrayList<>();
     }
 
-    public void setInputs(List<Integer> inputs) {
+    public void setInputs(List<Long> inputs) {
         this.inputs = new ArrayList<>(inputs);
         this.inputsIterator = this.inputs.iterator();
     }
 
-    public List<Integer> getOutputsLog() {
+    public List<Long> getOutputsLog() {
         return outputsLog;
     }
 
-    public List<Integer> getInputsLog() {
+    public List<Long> getInputsLog() {
         return inputsLog;
     }
 
@@ -67,7 +67,7 @@ public class IO {
         return executor;
     }
 
-    public int getLastOutput() {
+    public long getLastOutput() {
         return outputsLog.get(outputsLog.size() - 1);
     }
 

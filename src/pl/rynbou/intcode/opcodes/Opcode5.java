@@ -12,13 +12,14 @@ public class Opcode5 extends Opcode {
 
     @Override
     public void run(ProgramExecutor executor) {
-        int rawCode = executor.getAtPointerAndIncrement();
-        List<Integer> arguments = new ArrayList<>();
-        List<ParameterMode> modes = ParameterMode.modesFromRaw(rawCode, 2);
+        int rawCode = (int) executor.getAtPointerAndIncrement();
+        List<Long> arguments = new ArrayList<>();
+        List<ParameterMode> modes = ParameterMode.modesFromRaw(rawCode);
 
         for (int i = 0; i < getOpcodeInfo().getArgsAmount(); i++) arguments.add(executor.getAtPointerAndIncrement());
 
-        if (executor.get(modes.get(0), arguments.get(0)) != 0) executor.setMemoryPointer(executor.get(modes.get(1), arguments.get(1)));
+        if (executor.get(modes.get(0), arguments.get(0)) != 0)
+            executor.setMemoryPointer(executor.get(modes.get(1), arguments.get(1)));
     }
 
     @Override
