@@ -106,4 +106,8 @@ public class ProgramExecutor {
     public IO getIo() {
         return io;
     }
+
+    public boolean hasFinished() {
+        return finished;
+    }
 }
