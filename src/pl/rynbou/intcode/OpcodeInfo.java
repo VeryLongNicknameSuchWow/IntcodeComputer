@@ -19,15 +19,15 @@ public enum OpcodeInfo {
     private final int argsAmount;
     private final Class<? extends Opcode> clazz;
 
-    public static OpcodeInfo recognise(int opcode) {
-        for (OpcodeInfo entry : OpcodeInfo.values()) if (entry.getOpcode() == opcode % 100) return entry;
-        throw new RuntimeException("Unable to recognise: " + opcode);
-    }
-
     OpcodeInfo(int opcode, int argsAmount, Class<? extends Opcode> clazz) {
         this.opcode = opcode;
         this.argsAmount = argsAmount;
         this.clazz = clazz;
+    }
+
+    public static OpcodeInfo recognise(int opcode) {
+        for (OpcodeInfo entry : OpcodeInfo.values()) if (entry.getOpcode() == opcode % 100) return entry;
+        throw new RuntimeException("Unable to recognise: " + opcode);
     }
 
     public int getOpcode() {

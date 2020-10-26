@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cluster {
 
-    private List<ProgramExecutor> nodes = new ArrayList<>();
+    private final List<ProgramExecutor> nodes = new ArrayList<>();
     private Iterator<ProgramExecutor> iterator;
 
     public Cluster(String program, int nodesAmount) {
@@ -15,7 +15,8 @@ public class Cluster {
     }
 
     public Cluster(List<String> programs, int nodesAmount) {
-        if (programs.size() != nodesAmount) throw new RuntimeException("List of programs size is different than the amount of nodes");
+        if (programs.size() != nodesAmount)
+            throw new RuntimeException("List of programs size is different than the amount of nodes");
         for (int i = 0; i < nodesAmount; i++) nodes.add(new ProgramExecutor(programs.get(i), false, false));
         iterator = nodes.iterator();
     }

@@ -7,15 +7,15 @@ import java.util.Scanner;
 
 public class IO {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
+    private final List<Long> inputsLog = new ArrayList<>();
+    private final List<Long> outputsLog = new ArrayList<>();
+    private final ProgramExecutor executor;
     private boolean consoleInput;
     private boolean consoleOutput;
     private boolean outputInterrupt = false;
     private List<Long> inputs = new ArrayList<>();
-    private List<Long> inputsLog = new ArrayList<>();
-    private List<Long> outputsLog = new ArrayList<>();
     private Iterator<Long> inputsIterator = inputs.iterator();
-    private ProgramExecutor executor;
 
     public IO(ProgramExecutor executor, boolean consoleInput, boolean consoleOutput) {
         this.executor = executor;
