@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProgramExecutor {
-    private Map<Long, Long> memory = new HashMap<>();
-    private IO io;
+    private final Map<Long, Long> memory = new HashMap<>();
+    private final IO io;
     private long relativePointer = 0;
     private long memoryPointer = 0;
     private boolean finished = false;
